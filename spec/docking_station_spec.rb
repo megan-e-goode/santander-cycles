@@ -6,6 +6,7 @@ describe DockingStation do
   end
 
   it 'can release bike' do
-    expect(DockingStation).to respond_to(:release_bike)
+    docking_station = DockingStation.new
+    expect(docking_station).to respond_to(:release_bike)
   end
 end
