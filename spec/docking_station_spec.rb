@@ -4,6 +4,7 @@ describe DockingStation do
   let(:docking_station) {
     bike = Bike.new
     DockingStation.new(bike)
+
   }
   let(:bike) { Bike.new }
 
@@ -12,9 +13,11 @@ describe DockingStation do
   end
 
   it "can release bike" do
+    docking_station.dock(bike)
     expect(docking_station.release_bike).to be_an_instance_of(Bike)
   end
   it "works?" do
+    docking_station.dock(bike)
     expect(docking_station.release_bike.working?).to eql(true)
   end
 
@@ -27,5 +30,9 @@ describe DockingStation do
   it "allows to store bikes in dock" do
     docking_station.dock(bike)
     expect(docking_station.storage).to include(bike)
+  end
+
+  it '.release_bike raises exception if no bikes' do
+    expect{docking_station.release_bike}.to raise_error
   end
 end
