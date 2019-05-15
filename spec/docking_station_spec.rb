@@ -2,9 +2,8 @@ require "docking_station"
 
 describe DockingStation do
   let(:docking_station) {
-    bike = Bike.new
-    DockingStation.new(bike)
-
+    bike_capacity = Bike.new
+    DockingStation.new(bike_capacity)
   }
   let(:bike) { Bike.new }
 
@@ -39,5 +38,10 @@ describe DockingStation do
   it '.dock raises exception if dock is full' do
     docking_station.storage.push(bike)
     expect{(DockingStation::DEFAULT_CAPACITY + 1).times{docking_station.dock(bike)}}.to raise_error "Dock is full"
+  end
+
+  it 'when no capacity specified, default to 20' do
+    docking_station_np = DockingStation.new
+    expect(docking_station_np.bike_capacity).to eq(20)
   end
 end
