@@ -38,6 +38,6 @@ describe DockingStation do
 
   it '.dock raises exception if dock is full' do
     docking_station.storage.push(bike)
-    expect{21.times{docking_station.dock(bike)}}.to raise_error "Dock is full"
+    expect{(DockingStation::DEFAULT_CAPACITY + 1).times{docking_station.dock(bike)}}.to raise_error "Dock is full"
   end
 end
