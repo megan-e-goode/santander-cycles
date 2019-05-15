@@ -16,6 +16,7 @@ class DockingStation
   end
 
   def dock(bike)
+    raise "Dock is full" if @storage.length == 1
     @storage.push(bike)
   end
 end
